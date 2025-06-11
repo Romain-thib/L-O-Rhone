@@ -15,13 +15,15 @@ Nous avons réalisé un projet de développement d'une application de gestion de
 
 - **Shun Lembrez** :
 - Test unitaire Toutes les classes sauf celles de Romain
+- Test mock dans StockEauTest et StockGlobal
 - Création de la Classe AccueilController avec son fxml correspondante
+
 - Création de la Classe ClientController avec son fxml correspondante
 - Création de la Classe AjoutModificationClientController avec son fxml correspondante
+
 - Création de la Classe CommandesController avec son fxml correspondante
-- Création de la Classe AjoutModificationCommandesController avec son fxml correspondante
 - Création de la Classe StockEauController avec son fxml correspondante
-- Création de la Classe AjoutModificationStockEauController avec son fxml correspondante
+
 
 
 - **Thibaut Romain** :

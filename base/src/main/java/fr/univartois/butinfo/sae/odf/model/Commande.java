@@ -72,7 +72,7 @@ public class Commande implements RemisesPossibles {
         return id;
     }
     
-    public ObservableList<LigneDeCommande> getlignesDeCommande(){
+    public ObservableList<LigneDeCommande> getLignesCommande(){
 		return lignesDeCommande;
 	}
 }

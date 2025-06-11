@@ -29,7 +29,7 @@ public class CommandeTest {
         Eau eau = new Eau("Evian", "Plate", 2.0);
         commande.addLigneCommande(eau, 6);
 
-        ObservableList<LigneDeCommande> lignes = commande.getlignesDeCommande();
+        ObservableList<LigneDeCommande> lignes = commande.getLignesCommande();
         assertEquals(1, lignes.size());
         assertEquals(eau, lignes.get(0).getEau());
         assertEquals(6, lignes.get(0).getQuantite());
@@ -45,7 +45,7 @@ public class CommandeTest {
         commande.addLigneCommande(eau, 6);
         commande.updateLigneCommande(0, 10);
 
-        LigneDeCommande updated = commande.getlignesDeCommande().get(0);
+        LigneDeCommande updated = commande.getLignesCommande().get(0);
         assertEquals(10, updated.getQuantite());
         assertEquals(eau, updated.getEau());
     }

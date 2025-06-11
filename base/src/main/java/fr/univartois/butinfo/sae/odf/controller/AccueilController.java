@@ -3,6 +3,8 @@ package fr.univartois.butinfo.sae.odf.controller;
 import java.io.IOException;
 
 import fr.univartois.butinfo.sae.odf.model.Client;
+import fr.univartois.butinfo.sae.odf.model.Commande;
+import fr.univartois.butinfo.sae.odf.model.StockEau;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,8 @@ public class AccueilController {
 	private Stage primaryStage;
 	private Scene sceneAccueilController;
 	private ObservableList<Client> clientList;
+	private ObservableList<Commande> commandesList;
+	private ObservableList<StockEau> stockEauList;
     
 	public void setPrimaryStage(Stage stage) {
 		this.primaryStage = stage;
@@ -26,6 +30,14 @@ public class AccueilController {
     
     public void setClientList(ObservableList<Client> clientList) {
         this.clientList = clientList;
+    }
+    
+    public void setCommandesList(ObservableList<Commande> commandesList) {
+        this.commandesList = commandesList;
+    }
+    
+    public void setStockEauList(ObservableList<StockEau> stockEauList) {
+        this.stockEauList = stockEauList;
     }
 
 	@FXML
@@ -66,7 +78,9 @@ public class AccueilController {
 	    controller.setStage(this.primaryStage);
 	    controller.setScene(this.sceneAccueilController);
 	    
-	    /*controller.associeListView(stockEauList);*/
+	    if (stockEauList != null) {
+	        controller.setObservableList(stockEauList);
+	    }
     }
 
 	@FXML
@@ -85,6 +99,8 @@ public class AccueilController {
 	    controller.setStage(this.primaryStage);
 	    controller.setScene(this.sceneAccueilController);
 	    
-	    /*controller.associeListView(commandesList);*/
+	    if (commandesList != null) {
+	        controller.setObservableList(commandesList);
+	    }
     }
 }
