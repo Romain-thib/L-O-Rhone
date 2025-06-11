@@ -16,12 +16,12 @@ public class ClientParticulierTest {
     private ClientParticulier client;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         client = new ClientParticulier();
     }
 
     @Test
-    public void testAjoutPointsFidelite() {
+    void testAjoutPointsFidelite() {
         client.ajoutPointsFidelite(50.0); // 0 tranche
         assertEquals(0, client.getPointsFidelite());
 
@@ -33,7 +33,7 @@ public class ClientParticulierTest {
     }
 
     @Test
-    public void testGettersSetters() {
+    void testGettersSetters() {
         client.setNom("Dupont");
         assertEquals("Dupont", client.getNom());
 
@@ -42,7 +42,7 @@ public class ClientParticulierTest {
     }
 
     @Test
-    public void testToStringContainsFields() {
+    void testToStringContainsFields() {
         client.setNom("Dupont");
         client.setPrenom("Jean");
 

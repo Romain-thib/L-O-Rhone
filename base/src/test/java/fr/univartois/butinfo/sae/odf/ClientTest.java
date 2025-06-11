@@ -14,7 +14,9 @@ public class ClientTest {
         // Sous-classe anonyme de Client pour tester sans modifier ClientEntreprise
         Client client = new Client() {
             @Override
-            public void ajoutPointsFidelite(double achat) { }
+            public void ajoutPointsFidelite(double achat) {
+                // Méthode non implémentée volontairement
+            }
 
             @Override
             public String getTypeClient() {
@@ -43,7 +45,9 @@ public class ClientTest {
             {
                 code = 42;
             }
-            @Override public void ajoutPointsFidelite(double achat) { }
+            @Override public void ajoutPointsFidelite(double achat) {
+                // Méthode non implémentée volontairement
+            }
             @Override public String getTypeClient() { return "TEST"; }
         };
 
@@ -51,7 +55,9 @@ public class ClientTest {
             {
                 code = 42;
             }
-            @Override public void ajoutPointsFidelite(double achat) { }
+            @Override public void ajoutPointsFidelite(double achat) {
+                // Méthode non implémentée volontairement
+            }
             @Override public String getTypeClient() { return "TEST"; }
         };
 
@@ -59,7 +65,9 @@ public class ClientTest {
             {
                 code = 99;
             }
-            @Override public void ajoutPointsFidelite(double achat) { }
+            @Override public void ajoutPointsFidelite(double achat) {
+                // Méthode non implémentée volontairement
+            }
             @Override public String getTypeClient() { return "TEST"; }
         };
 

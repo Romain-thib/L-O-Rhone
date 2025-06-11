@@ -19,7 +19,7 @@ public class ClientEntrepriseTest {
      * chaque test commence avec un nouvel objet ClientEntreprise.
      */
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         clientEntreprise = new ClientEntreprise();
     }
 
@@ -28,7 +28,7 @@ public class ClientEntrepriseTest {
      * Les tranches sont de 1000 euros, avec 10 points par tranche.
      */
     @Test
-    public void testAjoutPointsFidelite() {
+    void testAjoutPointsFidelite() {
         clientEntreprise.ajoutPointsFidelite(100.0); // 0 tranche
         assertEquals(0, clientEntreprise.getPointsFidelite());
 
@@ -44,7 +44,7 @@ public class ClientEntrepriseTest {
      * Test des getters et setters pour les attributs spécifiques de ClientEntreprise.
      */
     @Test
-    public void testGetTypeClient() {
+    void testGetTypeClient() {
         assertEquals("Entreprise", clientEntreprise.getTypeClient());
     }
 
@@ -52,7 +52,7 @@ public class ClientEntrepriseTest {
      * Test de la méthode toString() pour vérifier qu'elle contient les informations attendues.
      */
     @Test
-    public void testToStringContainsExpectedValues() {
+    void testToStringContainsExpectedValues() {
         // Donne des valeurs connues pour vérifier le contenu de toString()
         clientEntreprise.setTelephone("0102030405");
         clientEntreprise.setEmail("contact@entreprise.com");

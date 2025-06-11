@@ -6,13 +6,7 @@ import fr.univartois.butinfo.sae.odf.model.*;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.Mockito.*;
-import static org.assertj.core.api.Assertions.*;
-
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * Classe de test pour Commande.
