@@ -1,9 +1,8 @@
 package fr.univartois.butinfo.sae.odf.model;
 
-import java.util.ArrayList;
+
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
-import java.util.List;
 
 
 public class Commande implements RemisesPossibles {
@@ -30,7 +29,7 @@ public class Commande implements RemisesPossibles {
 
     private double montantTotal() {
         //double montant= 0;
-        return lignesDeCommande.stream().reduce(0.0, (montant, e) -> montant += e.getQuantite(), Double::sum);
+    	return lignesDeCommande.stream().mapToDouble(LigneDeCommande::getQuantite).sum();
     }
 
     public double montant() {
@@ -57,8 +56,8 @@ public class Commande implements RemisesPossibles {
     }
 
     void updateLigneCommande(int index, int quantite) {
-        LigneDeCommande ligneDeCommande = lignesDeCommande.remove(index);
-        lignesDeCommande.add(new LigneDeCommande(ligneDeCommande.getEau(), quantite));
+    	LigneDeCommande nouvelleLigne = new LigneDeCommande(lignesDeCommande.get(index).getEau(), quantite);
+        lignesDeCommande.set(index, nouvelleLigne);
     }
 
     public Client getClient() {
@@ -68,4 +67,8 @@ public class Commande implements RemisesPossibles {
     public int getId() {
         return id;
     }
+    
+    public ObservableList<LigneDeCommande> getlignesDeCommande(){
+		return lignesDeCommande;
+	}
 }
