@@ -10,3 +10,14 @@ Nous avons réalisé un projet de développement d'une application de gestion de
 ```bash
 ./gradlew test
 ```
+
+## Repartition des Tâches :
+
+- **Shun Lembrez** :
+- Test unitaire Toutes les classes sauf celles de Romain
+- Commentaires de code
+
+
+- **Thibaut Romain** :
+- Test unitaire de la classe ClientTest, PaiementSimple, StockGlobalTest
+- Application et Controller principale
