@@ -28,3 +28,4 @@ Nous avons réalisé un projet de développement d'une application de gestion de
 - Test unitaire de la classe ClientTest, PaiementSimple, StockGlobalTest
 - Classe ODFApplication 
 - Commentaires de code
+- Amélioration de toutes les views fxml niveau style 
