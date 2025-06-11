@@ -1,19 +1,21 @@
 package fr.univartois.butinfo.sae.odf.model;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Commande implements RemisesPossibles {
     private final int id;
 
     private static int nextId = 0;
-    private final List<LigneDeCommande> lignesDeCommande;
+    private final ObservableList<LigneDeCommande> lignesDeCommande;
     private final Client client;
 
     public Commande(Client client) {
         this.id = nextId++;
         this.client = client;
-        lignesDeCommande = new ArrayList<>();
+        lignesDeCommande = FXCollections.observableArrayList();
     }
 
     @Override
@@ -27,7 +29,7 @@ public class Commande implements RemisesPossibles {
 
     private double montantTotal() {
         //double montant= 0;
-        return lignesDeCommande.stream().reduce(0.0, (montant, e) -> montant += e.getQuantite(), Double::sum);
+    	return lignesDeCommande.stream().mapToDouble(LigneDeCommande::getQuantite).sum();
     }
 
     public double montant() {
@@ -54,8 +56,8 @@ public class Commande implements RemisesPossibles {
     }
 
     void updateLigneCommande(int index, int quantite) {
-        LigneDeCommande ligneDeCommande = lignesDeCommande.remove(index);
-        lignesDeCommande.add(new LigneDeCommande(ligneDeCommande.getEau(), quantite));
+    	LigneDeCommande nouvelleLigne = new LigneDeCommande(lignesDeCommande.get(index).getEau(), quantite);
+        lignesDeCommande.set(index, nouvelleLigne);
     }
 
     public Client getClient() {
@@ -65,4 +67,8 @@ public class Commande implements RemisesPossibles {
     public int getId() {
         return id;
     }
+    
+    public ObservableList<LigneDeCommande> getlignesDeCommande(){
+		return lignesDeCommande;
+	}
 }

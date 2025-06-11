@@ -1,6 +1,6 @@
 package fr.univartois.butinfo.sae.odf.model;
 
-import static fr.univartois.butinfo.sae.odf.TypeClient.ENTREPRISE;
+import static fr.univartois.butinfo.sae.odf.model.TypeClient.ENTREPRISE;
 
 public class ClientEntreprise extends Client{
 
