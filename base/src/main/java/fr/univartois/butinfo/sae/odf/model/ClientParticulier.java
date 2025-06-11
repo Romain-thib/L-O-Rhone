@@ -7,6 +7,16 @@ public class ClientParticulier extends Client {
     private String prenom;
 
     private final TypeClient typeClient = PARTICULIER;
+    
+    public ClientParticulier() {
+        super();
+    }
+
+    public ClientParticulier(String nom, String prenom) {
+        super();
+        this.nom = nom;
+        this.prenom = prenom;
+    }
 
     @Override
     public void ajoutPointsFidelite(double achat) {
@@ -36,16 +46,7 @@ public class ClientParticulier extends Client {
     }
 
     @Override
-    public String toString() {
-        return "ClientParticulier{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", code=" + code +
-                ", dateInscription=" + dateInscription +
-                ", adresse=" + adresse +
-                ", telephone='" + telephone + '\'' +
-                ", email='" + email + '\'' +
-                ", pointsFidelite=" + pointsFidelite +
-                '}';
-    }
+	public String toString() {
+		return "ClientParticulier [nom=" + nom + ", prenom=" + prenom + ", typeClient=" + typeClient + "]";
+	}
 }

@@ -76,4 +76,22 @@ public class ClientTest {
         assertEquals(c1.hashCode(), c2.hashCode());
         assertNotEquals(c1, c3);
     }
+    
+    @Test
+    void testToStringClient() {
+        Client client = new Client() {
+            @Override public void ajoutPointsFidelite(double achat) {}
+            @Override public String getTypeClient() { return "TEST"; }
+        };
+        client.setEmail("a@b.com");
+        client.setTelephone("0123456789");
+
+        String s = client.toString();
+        assertTrue(s.contains("a@b.com"));
+        assertTrue(s.contains("0123456789"));
+        assertTrue(s.contains("code="));
+    }
+
+    
+    
 }

@@ -4,12 +4,20 @@ import java.util.Date;
 import java.util.Objects;
 
 public abstract class Client {
+    protected static int compteurCode = 1; // Compteur statique pour générer des codes uniques
     protected int code;
     protected Date dateInscription;
     protected Adresse adresse;
     protected String telephone;
     protected String email;
     protected int pointsFidelite;
+
+    // Constructeur
+    public Client() {
+        this.code = compteurCode++;
+        this.dateInscription = new Date();
+        this.pointsFidelite = 0;
+    }
 
     public abstract void ajoutPointsFidelite(double achat);
 
@@ -39,6 +47,14 @@ public abstract class Client {
         return pointsFidelite;
     }
 
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public void setDateInscription(Date dateInscription) {
+        this.dateInscription = dateInscription;
+    }
+
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
@@ -51,6 +67,10 @@ public abstract class Client {
         this.email = email;
     }
 
+    public void setPointsFidelite(int pointsFidelite) {
+        this.pointsFidelite = pointsFidelite;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,5 +81,14 @@ public abstract class Client {
     @Override
     public int hashCode() {
         return Objects.hash(getCode());
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "code=" + code +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
     }
 }

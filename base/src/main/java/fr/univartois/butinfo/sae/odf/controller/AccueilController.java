@@ -62,7 +62,7 @@ public class AccueilController {
 	    primaryStage.setScene(addClientScene);
 
 	    // On lie le modèle au nouveau contrôleur.
-	    ClientController controller = fxmlLoader.getController();
+	    StockEauController controller = fxmlLoader.getController();
 	    controller.setStage(this.primaryStage);
 	    controller.setScene(this.sceneAccueilController);
 	    
@@ -81,7 +81,7 @@ public class AccueilController {
 	    primaryStage.setScene(addClientScene);
 
 	    // On lie le modèle au nouveau contrôleur.
-	    ClientController controller = fxmlLoader.getController();
+	    CommandesController controller = fxmlLoader.getController();
 	    controller.setStage(this.primaryStage);
 	    controller.setScene(this.sceneAccueilController);
 	    

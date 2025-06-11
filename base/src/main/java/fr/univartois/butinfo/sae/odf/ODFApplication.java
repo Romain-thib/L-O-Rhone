@@ -30,7 +30,7 @@ public class ODFApplication extends Application {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fr.univartois.butinfo.sae.odf.view/accueil-view.fxml"));
 		Parent viewContent = fxmlLoader.load();
 
-		Scene mainScene = new Scene(viewContent, 800, 200);
+		Scene mainScene = new Scene(viewContent);
 		
 		stage.setScene(mainScene);
 		stage.setTitle("O-de-France - Accueil");
@@ -78,6 +78,7 @@ public class ODFApplication extends Application {
 		
 		// Client Entreprise
 		ClientEntreprise client3 = new ClientEntreprise();
+		client3.setNomEntreprise("Orange");
 		client3.setEmail("contact@entreprise.com");
 		client3.setTelephone("0147258369");
 		client3.setAdresse(adresse1);
@@ -85,6 +86,7 @@ public class ODFApplication extends Application {
 		
 		// Client Établissement Public
 		ClientEtablissementPublic client4 = new ClientEtablissementPublic();
+		client4.setNom("College Saint venant");
 		client4.setEmail("contact@mairie.fr");
 		client4.setTelephone("0369258147");
 		client4.setAdresse(adresse1);

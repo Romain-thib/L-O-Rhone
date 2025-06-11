@@ -66,5 +66,21 @@ public class ClientEntrepriseTest {
         assertTrue(toStringResult.contains("Rue des Lilas"));
         assertTrue(toStringResult.contains("Paris"));
     }
+    
+    /**
+     * Test des getters et setters pour les attributs spécifiques de ClientEntreprise.
+     */
+    @Test
+    void testGettersAndSetters() {
+        String nomEntreprise = "Orange";
+        String siret = "12345678900000";
+
+        clientEntreprise.setNomEntreprise(nomEntreprise);
+        clientEntreprise.setSiret(siret);
+
+        assertEquals(nomEntreprise, clientEntreprise.getNomEntreprise());
+        assertEquals(siret, clientEntreprise.getSiret());
+    }
+
 }
 

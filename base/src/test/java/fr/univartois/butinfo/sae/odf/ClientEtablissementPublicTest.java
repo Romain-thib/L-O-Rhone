@@ -3,6 +3,8 @@ package fr.univartois.butinfo.sae.odf;
 import fr.univartois.butinfo.sae.odf.model.Adresse;
 import fr.univartois.butinfo.sae.odf.model.ClientEtablissementPublic;
 import fr.univartois.butinfo.sae.odf.model.Commune;
+import fr.univartois.butinfo.sae.odf.model.TypeEtablissement;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -66,5 +68,18 @@ public class ClientEtablissementPublicTest {
         assertTrue(result.contains("Place de la République"));
         assertTrue(result.contains("Bordeaux"));
     }
+    
+    @Test
+    void testGettersAndSetters() {
+        String nomEtablissement = "etablisement indus";
+        TypeEtablissement typeEtablissement = TypeEtablissement.EPIC;
+
+        client.setNom(nomEtablissement);
+        client.setType(typeEtablissement);
+
+        assertEquals(nomEtablissement, client.getNom());
+        assertEquals(typeEtablissement, client.getType());
+    }
+
 }
 

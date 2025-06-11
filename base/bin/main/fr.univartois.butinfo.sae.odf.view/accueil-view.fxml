@@ -22,17 +22,17 @@
       
       <VBox alignment="CENTER" spacing="20.0">
          <children>
-            <Button fx:id="clientsButton" mnemonicParsing="false" onAction="#onClients" prefHeight="50.0" prefWidth="200.0" text="Gestion des Clients">
+            <Button  mnemonicParsing="false" onAction="#onClients" prefHeight="50.0" prefWidth="200.0" text="Gestion des Clients">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="stockEauButton" mnemonicParsing="false" onAction="#onStockEau" prefHeight="50.0" prefWidth="200.0" text="Stock d'Eau">
+            <Button mnemonicParsing="false" onAction="#onStockEau" prefHeight="50.0" prefWidth="200.0" text="Stock d'Eau">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="commandesButton" mnemonicParsing="false" onAction="#onCommandes" prefHeight="50.0" prefWidth="200.0" text="Commandes">
+            <Button  mnemonicParsing="false" onAction="#onCommandes" prefHeight="50.0" prefWidth="200.0" text="Commandes">
                <font>
                   <Font size="16.0" />
                </font>
