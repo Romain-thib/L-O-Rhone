@@ -27,10 +27,14 @@ public class Commande implements RemisesPossibles {
         return montantTotal() * reduce;
     }
 
+
     private double montantTotal() {
-        //double montant= 0;
-    	return lignesDeCommande.stream().mapToDouble(LigneDeCommande::getQuantite).sum();
+        //double montant = 0;
+        return lignesDeCommande.stream()
+                .mapToDouble(ligne -> ligne.getEau().getPrix() * ligne.getQuantite())
+                .sum();
     }
+
 
     public double montant() {
         return montantTotal() - montantDeLaRemise();
@@ -55,7 +59,7 @@ public class Commande implements RemisesPossibles {
         lignesDeCommande.add(new LigneDeCommande(eau, quantite));
     }
 
-    void updateLigneCommande(int index, int quantite) {
+    public void updateLigneCommande(int index, int quantite) {
     	LigneDeCommande nouvelleLigne = new LigneDeCommande(lignesDeCommande.get(index).getEau(), quantite);
         lignesDeCommande.set(index, nouvelleLigne);
     }

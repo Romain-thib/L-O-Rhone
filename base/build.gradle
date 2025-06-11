@@ -25,9 +25,6 @@ dependencies {
     // This dependency is used by the application.
     implementation libs.guava
 
-    implementation 'org-openjfx:javafx.fxml:21.0.1'
-    implementation 'org-openjfx:javafx-controls:21.0.1'
-
     // Use AssertJ for fluent assertions in tests.
     implementation 'org.assertj:assertj-core:3.24.2'
 

@@ -11,6 +11,13 @@ public class StockEau {
      */
     private int quantite;
 
+    public StockEau(Categorie categorie, Entrepot entrepot, int quantite) {
+        this.categorie = categorie;
+        this.entrepot = entrepot;
+        this.quantite = quantite;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

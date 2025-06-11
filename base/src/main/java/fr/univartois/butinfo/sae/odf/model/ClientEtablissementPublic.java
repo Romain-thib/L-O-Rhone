@@ -10,7 +10,7 @@ public class ClientEtablissementPublic extends Client {
 
     @Override
     public void ajoutPointsFidelite(double achat) {
-        int nbTranches = Double.valueOf(achat).intValue() / 500;
+        int nbTranches = (int) (achat / 500);
         pointsFidelite += nbTranches * 10;
     }
 

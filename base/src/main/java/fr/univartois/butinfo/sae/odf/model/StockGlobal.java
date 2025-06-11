@@ -2,33 +2,41 @@ package fr.univartois.butinfo.sae.odf.model;
 
 import java.util.Arrays;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.Comparator;
+
 public class StockGlobal {
-    private final StockEau[] stocks;
-    private int last = 0;
+    private final ObservableList<StockEau> stocks;
 
     public StockGlobal() {
-        stocks = new StockEau[50];
+        stocks = FXCollections.observableArrayList();
     }
 
     public void add(StockEau stock) {
-        int index;
+        int index = stocks.indexOf(stock);
 
-        if ((index = Arrays.stream(stocks).toList().indexOf(stock)) >= 0) {
-            stocks[index].deltaQuantity(stock.getQuantite());
+        if (index >= 0) {
+            stocks.get(index).deltaQuantity(stock.getQuantite());
         } else {
-            stocks[last++] = stock;
+            stocks.add(stock);
         }
     }
 
     public void sub(int index, int quantite) {
-        if (index < 0 || index >= last) {
+        if (index < 0 || index >= stocks.size()) {
             throw new IndexOutOfBoundsException("Invalid index");
         }
-        stocks[index].deltaQuantity(-quantite);
+        stocks.get(index).deltaQuantity(-quantite);
     }
 
     public void triQuantite() {
-        Arrays.sort(stocks, StockEau.QuantityComparator);
+        FXCollections.sort(stocks, StockEau.QuantityComparator);
     }
 
+    public ObservableList<StockEau> getStocks() {
+        return stocks;
+    }
 }
+
