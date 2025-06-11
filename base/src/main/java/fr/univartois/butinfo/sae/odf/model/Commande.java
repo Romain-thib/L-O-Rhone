@@ -1,0 +1,68 @@
+package fr.univartois.butinfo.sae.odf.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Commande implements RemisesPossibles {
+    private final int id;
+
+    private static int nextId = 0;
+    private final List<LigneDeCommande> lignesDeCommande;
+    private final Client client;
+
+    public Commande(Client client) {
+        this.id = nextId++;
+        this.client = client;
+        lignesDeCommande = new ArrayList<>();
+    }
+
+    @Override
+    public double montantDeLaRemise() {
+        int reduce = 0;
+        if ("Particulier".equals(client.getTypeClient())) {
+            reduce = Math.min(client.getPointsFidelite() / 100, 10);
+        }
+        return montantTotal() * reduce;
+    }
+
+    private double montantTotal() {
+        //double montant= 0;
+        return lignesDeCommande.stream().reduce(0.0, (montant, e) -> montant += e.getQuantite(), Double::sum);
+    }
+
+    public double montant() {
+        return montantTotal() - montantDeLaRemise();
+    }
+
+    @Override
+    public int nombreBouteillesGratuites() {
+        if ("Particulier".equals(client.getTypeClient()))
+            return nombreBouteillesGratuites(12);
+        if ("Établissement public".equals(client.getTypeClient()))
+            return nombreBouteillesGratuites(60);
+        if ("Entreprise".equals(client.getTypeClient()))
+            return nombreBouteillesGratuites(120);
+        return 0;
+    }
+
+    private int nombreBouteillesGratuites(int bloc) {
+        return lignesDeCommande.stream().reduce(0, (nb, ligne) -> nb + (ligne.getQuantite() / bloc), Integer::sum);
+    }
+
+    public void addLigneCommande(Eau eau, int quantite) {
+        lignesDeCommande.add(new LigneDeCommande(eau, quantite));
+    }
+
+    void updateLigneCommande(int index, int quantite) {
+        LigneDeCommande ligneDeCommande = lignesDeCommande.remove(index);
+        lignesDeCommande.add(new LigneDeCommande(ligneDeCommande.getEau(), quantite));
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public int getId() {
+        return id;
+    }
+}
