@@ -1,19 +1,22 @@
 package fr.univartois.butinfo.sae.odf.model;
 
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import java.util.List;
+
 
 public class Commande implements RemisesPossibles {
     private final int id;
 
     private static int nextId = 0;
-    private final List<LigneDeCommande> lignesDeCommande;
+    private final ObservableList<LigneDeCommande> lignesDeCommande;
     private final Client client;
 
     public Commande(Client client) {
         this.id = nextId++;
         this.client = client;
-        lignesDeCommande = new ArrayList<>();
+        lignesDeCommande = FXcollections.observableArrayList();
     }
 
     @Override
