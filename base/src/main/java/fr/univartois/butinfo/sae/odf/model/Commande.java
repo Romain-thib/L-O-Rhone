@@ -16,7 +16,7 @@ public class Commande implements RemisesPossibles {
     public Commande(Client client) {
         this.id = nextId++;
         this.client = client;
-        lignesDeCommande = FXcollections.observableArrayList();
+        lignesDeCommande = FXCollections.observableArrayList();
     }
 
     @Override
