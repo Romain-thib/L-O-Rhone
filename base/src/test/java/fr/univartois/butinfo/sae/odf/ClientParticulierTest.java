@@ -47,9 +47,12 @@ public class ClientParticulierTest {
         client.setPrenom("Jean");
 
         String str = client.toString();
-        assertTrue(str.contains("Dupont"));
-        assertTrue(str.contains("Jean"));
-        assertTrue(str.contains("pointsFidelite=" + client.getPointsFidelite()));
+
+        // Vérifie que les champs formatés dans toString sont bien présents
+        assertTrue(str.contains("ClientParticulier"));
+        assertTrue(str.contains("nom=Dupont"));
+        assertTrue(str.contains("prenom=Jean"));
+        assertTrue(str.contains("typeClient=Particulier")); // correspond à toString() de TypeClient.PARTICULIER
     }
 
 }

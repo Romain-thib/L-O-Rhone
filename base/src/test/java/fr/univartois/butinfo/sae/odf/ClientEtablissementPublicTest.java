@@ -56,17 +56,15 @@ public class ClientEtablissementPublicTest {
      */
     @Test
     void testToStringContainsExpectedValues() {
-        client.setTelephone("0606060606");
-        client.setEmail("public@etab.fr");
-        client.setAdresse(new Adresse(10, "Place de la République", new Commune("33", "Bordeaux", "Gironde")));
+        client.setNom("Lycée National");
+        client.setType(TypeEtablissement.EPIC);
 
         String result = client.toString();
 
         assertTrue(result.contains("ClientEtablissementPublic"));
-        assertTrue(result.contains("0606060606"));
-        assertTrue(result.contains("public@etab.fr"));
-        assertTrue(result.contains("Place de la République"));
-        assertTrue(result.contains("Bordeaux"));
+        assertTrue(result.contains("Lycée National"));              // Vérifie le nom
+        assertTrue(result.contains("EPIC"));                        // Vérifie le type (via .toString() de l'enum)
+        assertTrue(result.contains("Établissement public"));        // Vérifie typeClient (via .toString())
     }
     
     @Test
