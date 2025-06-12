@@ -53,20 +53,17 @@ public class ClientEntrepriseTest {
      */
     @Test
     void testToStringContainsExpectedValues() {
-        // Donne des valeurs connues pour vérifier le contenu de toString()
-        clientEntreprise.setTelephone("0102030405");
-        clientEntreprise.setEmail("contact@entreprise.com");
-        clientEntreprise.setAdresse(new Adresse(1, "Rue des Lilas", new Commune("75", "Paris", "IDF")));
+        clientEntreprise.setNomEntreprise("Nom SARL");
+        clientEntreprise.setSiret("123456789");
 
         String toStringResult = clientEntreprise.toString();
 
-        assertTrue(toStringResult.contains("ClientEntreprise"));
-        assertTrue(toStringResult.contains("0102030405"));
-        assertTrue(toStringResult.contains("contact@entreprise.com"));
-        assertTrue(toStringResult.contains("Rue des Lilas"));
-        assertTrue(toStringResult.contains("Paris"));
+        assertTrue(toStringResult.contains("Nom SARL"));
+        assertTrue(toStringResult.contains("123456789"));
+        assertTrue(toStringResult.contains("Entreprise"));
     }
-    
+
+
     /**
      * Test des getters et setters pour les attributs spécifiques de ClientEntreprise.
      */

@@ -91,16 +91,20 @@ public class AccueilController {
 	    Parent viewContent = fxmlLoader.load();
 
 	    // Ensuite, on la place dans une nouvelle Scene.
-	    Scene addClientScene = new Scene(viewContent);
-	    primaryStage.setScene(addClientScene);
+	    Scene commandesScene = new Scene(viewContent);
+	    primaryStage.setScene(commandesScene);
 
 	    // On lie le modèle au nouveau contrôleur.
 	    CommandesController controller = fxmlLoader.getController();
 	    controller.setStage(this.primaryStage);
 	    controller.setScene(this.sceneAccueilController);
 	    
+	    // Passer les listes nécessaires au contrôleur
 	    if (commandesList != null) {
 	        controller.setObservableList(commandesList);
+	    }
+	    if (clientList != null) {
+	        controller.setClientsList(clientList);
 	    }
     }
 }

@@ -93,7 +93,7 @@ public class StockEauController implements Initializable {
     private void retourAccueil() {
         if (stage != null && sceneStockEauController != null) {
             stage.setScene(sceneStockEauController);
-            stage.setTitle("O-de-France - Accueil");
+            stage.setTitle("L'Ô Rhône - Accueil");
         }
     }
 }

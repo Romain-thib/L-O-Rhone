@@ -9,7 +9,7 @@
 
 <VBox alignment="CENTER" spacing="30.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.odf.controller.AccueilController">
    <children>
-      <Label text="O-de-France" textAlignment="CENTER">
+      <Label text="L'Ô Rhône" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

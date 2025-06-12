@@ -44,7 +44,7 @@ public class ODFApplication extends Application {
 		Scene mainScene = new Scene(viewContent);
 		
 		stage.setScene(mainScene);
-		stage.setTitle("O-de-France - Accueil");
+		stage.setTitle("L'Ô Rhône - Accueil");
 
 		AccueilController accueilController = fxmlLoader.getController();
 		

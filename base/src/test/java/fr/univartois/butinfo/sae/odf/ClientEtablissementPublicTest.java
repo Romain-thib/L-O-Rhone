@@ -16,6 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Cette classe teste les fonctionnalités spécifiques à un client établissement public,
  * notamment l'ajout de points de fidélité et les getters/setters.
  */
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class ClientEtablissementPublicTest {
 
     private ClientEtablissementPublic client;
@@ -23,6 +28,8 @@ public class ClientEtablissementPublicTest {
     @BeforeEach
     public void setUp() {
         client = new ClientEtablissementPublic();
+        client.setNom("Lycée National");
+        client.setType(TypeEtablissement.EPIC);
     }
 
     /**
@@ -42,8 +49,7 @@ public class ClientEtablissementPublicTest {
     }
 
     /**
-     * Test des getters et setters pour les attributs spécifiques de ClientEtablissementPublic.
-     * On vérifie que le type de client est bien "ETABLISSEMENT_PUBLIC".
+     * Vérifie que le type de client est bien "Établissement public".
      */
     @Test
     void testGetTypeClient() {
@@ -52,26 +58,28 @@ public class ClientEtablissementPublicTest {
 
     /**
      * Test de la méthode toString() pour vérifier qu'elle contient les informations attendues.
-     * On vérifie que les champs spécifiques à ClientEtablissementPublic sont présents.
      */
     @Test
     void testToStringContainsExpectedValues() {
-        client.setTelephone("0606060606");
-        client.setEmail("public@etab.fr");
-        client.setAdresse(new Adresse(10, "Place de la République", new Commune("33", "Bordeaux", "Gironde")));
+        client.setNom("Lycée National");
+        client.setType(TypeEtablissement.EPIC);
 
         String result = client.toString();
 
         assertTrue(result.contains("ClientEtablissementPublic"));
-        assertTrue(result.contains("0606060606"));
-        assertTrue(result.contains("public@etab.fr"));
-        assertTrue(result.contains("Place de la République"));
-        assertTrue(result.contains("Bordeaux"));
+        assertTrue(result.contains("Lycée National"));              // Vérifie le nom
+        assertTrue(result.contains("EPIC"));                        // Vérifie le type (via .toString() de l'enum)
+        assertTrue(result.contains("Établissement public"));        // Vérifie typeClient (via .toString())
     }
-    
+
+
+
+    /**
+     * Test des getters et setters personnalisés.
+     */
     @Test
     void testGettersAndSetters() {
-        String nomEtablissement = "etablisement indus";
+        String nomEtablissement = "Établissement Industriel";
         TypeEtablissement typeEtablissement = TypeEtablissement.EPIC;
 
         client.setNom(nomEtablissement);
@@ -80,6 +88,5 @@ public class ClientEtablissementPublicTest {
         assertEquals(nomEtablissement, client.getNom());
         assertEquals(typeEtablissement, client.getType());
     }
-
 }
 
