@@ -67,7 +67,10 @@ class AdresseTest {
         assertEquals(nouvelleCommune, adresse.getCommune());
     }
 
-    //idem
+    /**
+     * Test de la méthode toString pour vérifier que la représentation textuelle de l'adresse est correcte.
+     * On vérifie que le toString contient les valeurs importantes de l'adresse.
+     */
     @Test
     void testToString() {
         Commune c = new Commune("62", "Arras", "Pas-de-Calais");

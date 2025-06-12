@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 //Classe ajoutée pour tester les getters, setters, equals et hashCode de Client pour atteindre plus de 80% de couverture de code
 public class ClientTest {
 
+    /**
+     * test les Getters et Setters de la classe Client.
+     */
     @Test
     void testGettersAndSetters() {
         // Sous-classe anonyme de Client pour tester sans modifier ClientEntreprise
@@ -38,6 +41,9 @@ public class ClientTest {
         assertEquals(0, client.getPointsFidelite());
     }
 
+    /**
+     * * Test de la méthode equals et hashCode pour vérifier l'égalité des instances de Client.
+     */
     @Test
     void testEqualsAndHashCode() {
         // Création de deux clients avec même code
@@ -76,7 +82,10 @@ public class ClientTest {
         assertEquals(c1.hashCode(), c2.hashCode());
         assertNotEquals(c1, c3);
     }
-    
+
+    /**
+     * Test de la méthode toString pour vérifier la représentation textuelle d'un Client.
+     */
     @Test
     void testToStringClient() {
         Client client = new Client() {
