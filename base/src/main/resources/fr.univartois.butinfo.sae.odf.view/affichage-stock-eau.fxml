@@ -6,80 +6,119 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.odf.controller.StockEauController">
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="fr.univartois.butinfo.sae.odf.controller.StockEauController">
    <children>
-      <Label text="Gestion du Stock d'Eau" style="-fx-font-size: 18px; -fx-font-weight: bold;">
-         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin>
+      <!-- Titre -->
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Gestion des Stocks d'Eau">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+         </padding>
       </Label>
       
-      <HBox>
+      <!-- Contenu principal : liste + détails -->
+      <HBox spacing="20.0" VBox.vgrow="ALWAYS">
          <children>
-            <!-- Liste du stock -->
-            <VBox HBox.hgrow="ALWAYS">
+            <!-- Partie gauche : Liste des stocks -->
+            <VBox spacing="10.0" minWidth="300.0" prefWidth="400.0">
                <children>
-                  <Label text="Liste du Stock" style="-fx-font-weight: bold;" />
-                  <ListView fx:id="stockEauListView" prefHeight="350.0" prefWidth="300.0">
-                     <VBox.margin>
-                        <Insets bottom="10.0" right="10.0" top="5.0" />
-                     </VBox.margin>
-                  </ListView>
+                  <Label text="Liste des Stocks :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  
+                  <ListView fx:id="stockEauListView" VBox.vgrow="ALWAYS" />
+                  
+                  <!-- Boutons d'action -->
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Button fx:id="ajouterButton" mnemonicParsing="false" onAction="#ajouterStock" text="Ajouter" minWidth="80.0">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="modifierButton" mnemonicParsing="false" onAction="#modifierStock" text="Modifier" minWidth="80.0" />
+                        <Button fx:id="supprimerButton" mnemonicParsing="false" onAction="#supprimerStock" text="Supprimer" minWidth="80.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
                </children>
             </VBox>
             
-            <!-- Détails du stock sélectionné -->
-            <VBox prefWidth="250.0">
+            <!-- Partie droite : Détails du stock sélectionné -->
+            <VBox spacing="15.0" minWidth="250.0" prefWidth="300.0">
                <children>
-                  <Label text="Détails du Stock" style="-fx-font-weight: bold;" />
+                  <Label text="Détails du Stock :">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                   
-                  <HBox alignment="CENTER_LEFT">
+                  <!-- Champ Catégorie -->
+                  <VBox spacing="5.0">
                      <children>
-                        <Label text="Catégorie:" prefWidth="80.0" />
+                        <Label text="Catégorie :">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
                         <TextField fx:id="categorieTextField" editable="false" />
                      </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="10.0" />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
                   
-                  <HBox alignment="CENTER_LEFT">
+                  <!-- Champ Entrepôt -->
+                  <VBox spacing="5.0">
                      <children>
-                        <Label text="Entrepôt:" prefWidth="80.0" />
+                        <Label text="Entrepôt :">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
                         <TextField fx:id="entrepotTextField" editable="false" />
                      </children>
-                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
                   
-                  <HBox alignment="CENTER_LEFT">
+                  <!-- Champ Quantité -->
+                  <VBox spacing="5.0">
                      <children>
-                        <Label text="Quantité:" prefWidth="80.0" />
+                        <Label text="Quantité (caisses) :">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
                         <TextField fx:id="quantiteTextField" editable="false" />
                      </children>
-                     <VBox.margin>
-                        <Insets bottom="10.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
                </children>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
             </VBox>
          </children>
-         <VBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
       </HBox>
       
       <!-- Bouton retour -->
-      <Button mnemonicParsing="false" onAction="#retourAccueil" text="Retour à l'Accueil">
-         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin>
-      </Button>
+      <HBox alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#retourAccueil" text="Retour à l'accueil" minWidth="150.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+         </padding>
+      </HBox>
    </children>
 </VBox>

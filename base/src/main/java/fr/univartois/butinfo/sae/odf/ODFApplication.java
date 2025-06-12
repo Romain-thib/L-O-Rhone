@@ -24,10 +24,11 @@ import javafx.stage.Stage;
 
 public class ODFApplication extends Application {
 
-	
-	
 	@Override
 	public void start(Stage stage) throws IOException {
+		
+		// Création de la liste des entrepôts avec des données de test
+		ObservableList<Entrepot> entrepotsList = creerListeEntrepotsTest();
 		
 		// Création de la liste des clients avec des données de test
 		ObservableList<Client> clientList = creerListeClientsTest();
@@ -36,7 +37,7 @@ public class ODFApplication extends Application {
 		ObservableList<Commande> commandesList = creerListeCommandesTest(clientList);
 		
 		// Création de la liste des stocks avec des données de test
-		ObservableList<StockEau> stockEauList = creerListeStockEauTest();
+		ObservableList<StockEau> stockEauList = creerListeStockEauTest(entrepotsList);
 				
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fr.univartois.butinfo.sae.odf.view/accueil-view.fxml"));
 		Parent viewContent = fxmlLoader.load();
@@ -51,15 +52,34 @@ public class ODFApplication extends Application {
 		accueilController.setPrimaryStage(stage);
 		accueilController.setScene(mainScene);
 		
-		// Passer la liste des clients au contrôleur d'accueil et la liste des commande puis des stock 
+		// Passer toutes les listes au contrôleur d'accueil
 		accueilController.setClientList(clientList);
 		accueilController.setCommandesList(commandesList);
 		accueilController.setStockEauList(stockEauList);
-		
+		accueilController.setEntrepotsList(entrepotsList);
 		
 		stage.show();
-
-
+	}
+	
+	/**
+	 * Crée une liste d'entrepôts de test
+	 */
+	private ObservableList<Entrepot> creerListeEntrepotsTest() {
+		ObservableList<Entrepot> entrepots = FXCollections.observableArrayList();
+		
+		// Création d'adresses de test
+		Adresse adresse1 = new Adresse(5, "Rue des Lilas", new Commune("62", "Arras", "Pas-de-Calais"));
+		Adresse adresse2 = new Adresse(12, "Avenue de la Paix", new Commune("59", "Lille", "Nord"));
+		Adresse adresse3 = new Adresse(8, "Boulevard du Commerce", new Commune("80", "Amiens", "Somme"));
+		Adresse adresse4 = new Adresse(3, "Rue de l'Industrie", new Commune("02", "Laon", "Aisne"));
+		
+		// Création des entrepôts
+		entrepots.add(new Entrepot(1, "Entrepôt Nord", adresse2));
+		entrepots.add(new Entrepot(2, "Entrepôt Sud", adresse1));
+		entrepots.add(new Entrepot(3, "Entrepôt Est", adresse3));
+		entrepots.add(new Entrepot(4, "Entrepôt Ouest", adresse4));
+		
+		return entrepots;
 	}
 	
 	/**
@@ -158,35 +178,33 @@ public class ODFApplication extends Application {
 	/**
 	 * Crée une liste de stocks d'eau de test
 	 */
-	private ObservableList<StockEau> creerListeStockEauTest() {
+	private ObservableList<StockEau> creerListeStockEauTest(ObservableList<Entrepot> entrepots) {
 		ObservableList<StockEau> stocks = FXCollections.observableArrayList();
 		
 		// Création des catégories de test 
 		Categorie plateCategory = Categorie.EAU_PLATE; 
 		Categorie gazeuseCategory = Categorie.EAU_GAZEUSE; 
 		
-		// Création d'une adresse de test
-		Adresse adresse1 = new Adresse(5, "Rue des Lilas", new Commune("62", "Arras", "Pas-de-Calais"));
-		
-		// Création des entrepôts de test (adaptez selon votre classe Entrepot)
-		Entrepot entrepotNord = new Entrepot(1,"Entrepôt Nord", adresse1);
-		Entrepot entrepotSud = new Entrepot(2,"Entrepôt Sud", adresse1);
-		Entrepot entrepotEst = new Entrepot(3,"Entrepôt Est", adresse1);
-		Entrepot entrepotOuest = new Entrepot(4,"Entrepôt Ouest", adresse1);
-		
-		// Création des stocks
-		stocks.add(new StockEau(plateCategory, entrepotNord, 150));
-		stocks.add(new StockEau(gazeuseCategory, entrepotNord, 200));
-		stocks.add(new StockEau(plateCategory, entrepotSud, 180));
-		stocks.add(new StockEau(gazeuseCategory, entrepotSud, 120));
-		stocks.add(new StockEau(plateCategory, entrepotEst, 90));
-		stocks.add(new StockEau(gazeuseCategory, entrepotEst, 160));
-		stocks.add(new StockEau(plateCategory, entrepotOuest, 220));
-		stocks.add(new StockEau(gazeuseCategory, entrepotOuest, 85));
+		// Utiliser les entrepôts créés précédemment
+		if (entrepots.size() >= 4) {
+			Entrepot entrepotNord = entrepots.get(0);
+			Entrepot entrepotSud = entrepots.get(1);
+			Entrepot entrepotEst = entrepots.get(2);
+			Entrepot entrepotOuest = entrepots.get(3);
+			
+			// Création des stocks
+			stocks.add(new StockEau(plateCategory, entrepotNord, 150));
+			stocks.add(new StockEau(gazeuseCategory, entrepotNord, 200));
+			stocks.add(new StockEau(plateCategory, entrepotSud, 180));
+			stocks.add(new StockEau(gazeuseCategory, entrepotSud, 120));
+			stocks.add(new StockEau(plateCategory, entrepotEst, 90));
+			stocks.add(new StockEau(gazeuseCategory, entrepotEst, 160));
+			stocks.add(new StockEau(plateCategory, entrepotOuest, 220));
+			stocks.add(new StockEau(gazeuseCategory, entrepotOuest, 85));
+		}
 		
 		return stocks;
 	}
-
 
 	public static void main(String[] args) {
 		launch();
